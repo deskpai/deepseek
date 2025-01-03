@@ -70,6 +70,21 @@ for chunk in api_client.chat_completion(prompt='Hi', stream=True):
     print(chunk, end='', flush=True)
 ```
 
+### Chat (Multi-turn Mode)
+
+For multi-turn mode, you need to construct prompt as a list with chat history. An example is as below:
+
+```python
+prompt = [
+    {"role": "system", "content": "You are a helpful assistant"},
+    {"role": "user", "content": "What is the capital of China?"},
+    {"role": "assistant", "content": "The capital of China is Beijing."},
+    {"role": "user", "content": "What is the capital of the United States?"}
+]
+for chunk in api_client.chat_completion(prompt=prompt, stream=True):
+    print(chunk, end='', flush=True)
+```
+
 ### Fill-In-the-Middle (Streaming Disabled)
 ```python
 response = api_client.fim_completion(prompt='Hi', max_tokens=64)

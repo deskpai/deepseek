@@ -50,26 +50,13 @@ class DeepSeekAPI:
 
     def chat_completion(self, prompt=DEFAULT_USR_PROM, prompt_sys=DEFAULT_SYS_PROM, stream=False, model='deepseek-chat',
                         **kwargs):
-        payload = {
-            "messages": [
+        payload = {"model": model, "frequency_penalty": 0, "max_tokens": 2048, "presence_penalty": 0,
+                   "response_format": {"type": "text"}, "stop": None, "stream": stream, "stream_options": None,
+                   "temperature": 1, "top_p": 1, "tools": None, "tool_choice": "none", "logprobs": False,
+                   "top_logprobs": None, 'messages': [
                 {"content": prompt_sys, "role": "system"},
                 {"content": prompt, "role": "user"}
-            ],
-            "model": model,
-            "frequency_penalty": 0,
-            "max_tokens": 2048,
-            "presence_penalty": 0,
-            "response_format": {"type": "text"},
-            "stop": None,
-            "stream": stream,
-            "stream_options": None,
-            "temperature": 1,
-            "top_p": 1,
-            "tools": None,
-            "tool_choice": "none",
-            "logprobs": False,
-            "top_logprobs": None
-        }
+            ] if isinstance(prompt, str) else prompt}
         payload.update(kwargs)
 
         response = self._post_request(API_CHAT_COM, payload, stream)
