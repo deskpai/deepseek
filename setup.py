@@ -4,7 +4,7 @@ import os
 here = os.path.dirname(os.path.realpath(__file__))
 HAS_CUDA = os.system("nvidia-smi > /dev/null 2>&1") == 0
 
-VERSION = "0.0.1.dev3"
+VERSION = "1.0.0"
 DESCRIPTION = "Deepseek API Library"
 
 packages = [
