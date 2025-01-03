@@ -42,6 +42,8 @@ If DEEPSEEK_API_KEY is not set, you need to manually pass api_key in code `DeepS
 
 ## 💎 Usage
 
+- [Video Demo 1](https://cms.deskpai.com/view?m=l9tcCdrZA)
+
 ### Initialize the API Client
 ```python
 from deepseek import DeepSeekAPI
