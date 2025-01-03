@@ -6,15 +6,14 @@ from deepseek.const import *
 class DeepSeekAPI:
     def __init__(self, api_key=DEEPSEEK_API_KEY):
         if api_key is None:
-            raise ValueError("Please provide a valid API key.(Linux: export DEEPSEEK_API_KEY=<YOUR_API_KEY>, "
-                             "Windows: setx DEEPSEEK_API_KEY <YOUR_API_KEY>)")
+            raise ValueError("DEEPSEEK_API_KEY is missing")
         self.api_key = api_key
         self.headers = {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             'Authorization': f'Bearer {self.api_key}'
         }
-        self.models = self._get_models()
+
 
     def user_balance(self):
         response = requests.get(API_USER_BAL, headers=self.headers)
@@ -51,9 +50,6 @@ class DeepSeekAPI:
 
     def chat_completion(self, prompt=DEFAULT_USR_PROM, prompt_sys=DEFAULT_SYS_PROM, stream=False, model='deepseek-chat',
                         **kwargs):
-        if model not in self.models:
-            raise ValueError(f"Model {model} is not supported")
-
         payload = {
             "messages": [
                 {"content": prompt_sys, "role": "system"},
@@ -81,9 +77,6 @@ class DeepSeekAPI:
             response.json()['choices'][0].get('message', {}).get('content', '')
 
     def fim_completion(self, prompt=DEFAULT_USR_PROM, stream=False, model='deepseek-chat', **kwargs):
-        if model not in self.models:
-            raise ValueError(f"Model {model} is not supported")
-
         payload = {
             "model": model,
             "prompt": prompt,
@@ -105,7 +98,7 @@ class DeepSeekAPI:
         return self.completion_impl(response, 'fim') if stream else \
             response.json()['choices'][0].get('text', '')
 
-    def _get_models(self):
+    def get_models(self):
         response = requests.get(API_CHAT_MOD, headers=self.headers)
         r = response.json()
         models = []
