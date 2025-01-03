@@ -85,6 +85,8 @@ for chunk in api_client.chat_completion(prompt=prompt, stream=True):
     print(chunk, end='', flush=True)
 ```
 
+[This](https://github.com/deskpai/deskpai/tree/main/src#multiturn-chat) is another multi-turn chat example in [Deskpai Image Chat](https://github.com/deskpai/deskpai/tree/main/src#llmimage-chat).
+
 ### Fill-In-the-Middle (Streaming Disabled)
 ```python
 response = api_client.fim_completion(prompt='Hi', max_tokens=64)
