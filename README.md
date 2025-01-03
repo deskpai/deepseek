@@ -1,12 +1,12 @@
-# DeepSeek
+# DeepSeek API Library
 
 ![Github release](https://img.shields.io/badge/release-v1.0.0-red) ![License](https://img.shields.io/badge/License-Apache--2.0-red)
 
-![Deepseek](img/logo.png)
+![Deepseek](https://raw.githubusercontent.com/deskpai/deepseek/main/img/logo.png)
 
-DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models.
+DeepSeek-V3 achieves a significant breakthrough in inference speed over previous models. It tops the leaderboard among open-source models and rivals the most advanced closed-source models globally at the time of this writing.
 
-It tops the leaderboard among open-source models and rivals the most advanced closed-source models globally at the time of this writing.
+This library is a thin client to communicate with the deepseek server.
 
 ## 📥 Installation
 
@@ -70,4 +70,6 @@ for chunk in api_client.fim_completion(prompt='Once upon a time, ', stream=True)
     print(chunk, end='', flush=True)
 ```
 
-# deepseek
+
+> Maintained by [deskpai.com](https://deskpai.com) 2025, Contact: [dev@deskpai.com](mailto:dev@deskpai.com)
+
