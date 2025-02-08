@@ -1,6 +1,6 @@
 # DeepSeek API Library
 
-![Github release](https://img.shields.io/badge/release-v1.0.0-red) ![License](https://img.shields.io/badge/License-Apache--2.0-red)
+![Github release](https://img.shields.io/badge/release-v1.0.0-red) ![License](https://img.shields.io/badge/License-DOSL--1.0-red)
 
 ![Deepseek](https://raw.githubusercontent.com/deskpai/deepseek/main/img/logo.png)
 
@@ -27,11 +27,13 @@ You need to obtain a DeepSeek API Key. If you don't have one, visit [here](https
 You can configure your API key as an environment variable.
 
 ### On macOS or Linux:
+
 ```bash
 export DEEPSEEK_API_KEY=<YOUR_API_KEY>
 ```
 
 ### On Windows (PowerShell):
+
 ```powershell
 setx DEEPSEEK_API_KEY <YOUR_API_KEY>
 ```
@@ -52,22 +54,26 @@ api_client = DeepSeekAPI()
 ```
 
 ### Retrieve Account Balance
+
 ```python
 api_client.user_balance()
 ```
 
 ### List Available Models
+
 ```python
 api_client.get_models()
 ```
 
 ### Chat (Streaming Disabled)
+
 ```python
 response = api_client.chat_completion(prompt='Hi')
 print(response)
 ```
 
 ### Chat (Streaming Enabled)
+
 ```python
 for chunk in api_client.chat_completion(prompt='Hi', stream=True):
     print(chunk, end='', flush=True)
