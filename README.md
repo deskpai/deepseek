@@ -45,6 +45,7 @@ If DEEPSEEK_API_KEY is not set, you need to manually pass api_key in code `DeepS
 - [Video Demo 1](https://cms.deskpai.com/view?m=l9tcCdrZA)
 
 ### Initialize the API Client
+
 ```python
 from deepseek import DeepSeekAPI
 api_client = DeepSeekAPI()
@@ -90,23 +91,31 @@ for chunk in api_client.chat_completion(prompt=prompt, stream=True):
 [This](https://github.com/deskpai/deskpai/tree/main/src#multiturn-chat) is another multi-turn chat example in [Deskpai Image Chat](https://github.com/deskpai/deskpai/tree/main/src#llmimage-chat).
 
 ### Fill-In-the-Middle (Streaming Disabled)
+
 ```python
 response = api_client.fim_completion(prompt='Hi', max_tokens=64)
 print(response)
 ```
 
 ### Fill-In-the-Middle (Streaming Enabled)
+
 ```python
 for chunk in api_client.fim_completion(prompt='Once upon a time, ', stream=True):
     print(chunk, end='', flush=True)
 ```
 
 ### Customized Model Inference Parameters
+
 ```python
 use_case = 'Creative Writing'
 kwargs = {'max_tokens': 7680, 'temperature': TEMPERATURE_MAP[use_case]}
 api_client.chat_completion(prompt='Hi', **kwargs)
 ```
+
+## License
+
+This project is licensed under the [DOSL-1.0 license](https://github.com/deskpai/deskpai/blob/main/LICENSE).
+
 
 ---
 
